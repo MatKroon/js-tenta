@@ -6,11 +6,94 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    //TODO: we need to add how much we want to lend (slider); //TODO: we need add how long we want
-    to lend --> slider; //TODO: we need a result section that looks console;
+    <div class="container">
+      <h1>Lånekalkylator</h1>
+      <section class="input-lending item">
+        <label for="lending-amount" class="form-label">Hur mycket vill du låna?</label>
+
+        <div class="mb-3 row">
+          <div class="col-sm-9">
+            <input
+              oninput="updateAmount(this.value);"
+              type="range"
+              class="form-range"
+              min="0"
+              max="1000000"
+              step="1000"
+              id="lending-amount"
+            />
+          </div>
+          <div class="col-sm-2">
+            <input
+              oninput="updateAmount(this.value);"
+              class="form-control"
+              type="text"
+              id="amount-text-input"
+              value=""
+            />
+          </div>
+          <div class="col-sm-1">
+            <span>kr</span>
+          </div>
+        </div>
+
+        <label for="ledning-years" class="form-label">Återbetalningstid</label>
+
+        <div class="mb-3 row">
+          <div class="col-sm-9">
+            <input
+              oninput="updateYears(this.value);"
+              type="range"
+              class="form-range"
+              min="0"
+              max="10"
+              id="lending-years"
+            />
+          </div>
+          <div class="col-sm-2">
+            <input
+              oninput="updateYears(this.value);"
+              class="form-control"
+              type="text"
+              id="year-text-input"
+              value=""
+            />
+          </div>
+          <div class="col-sm-1">
+            <span>år</span>
+          </div>
+        </div>
+      </section>
+      <section class="result-lending item">
+        <h2>Dina kostnader</h2>
+        <span>Amortering per månad:</span>
+        <span id="cost-month"></span><span>kr</span>
+        <br />
+        <br />
+        <span>Total kostnad (amortering + ränta):</span>
+        <span id="cost-total"></span><span>kr</span>
+        <br />
+        <br />
+        <span>Total kostnad (ränta):</span>
+        <span id="interest-total"></span><span>kr</span>
+        <br />
+        <br />
+        <p>Amorterings vs ränta:</p>
+        <canvas id="canvas" width="800" height="50"></canvas>
+        <p>grön = amortering/avbetalning, röd = ränta på lån</p>
+      </section>
+    </div>
 
     <script src="app.js" async defer></script>
   </body>

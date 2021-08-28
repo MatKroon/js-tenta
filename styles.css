@@ -1,3 +1,15 @@
 .container {
   display: grid;
+  grid-row-gap: 30px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.item {
+  width: 80%;
+}
+
+.result-lending {
+  border-radius: 10px;
+  background-color: rgb(184, 224, 184);
+  padding: 1em 20px 1em;
 }
